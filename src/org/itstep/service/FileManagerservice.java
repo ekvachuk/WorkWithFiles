@@ -1,8 +1,6 @@
 package org.itstep.service;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 
 public class FileManagerservice {
@@ -34,5 +32,34 @@ public class FileManagerservice {
     public static void copyFile(String pathFrom, String pathTo) {
         byte[] bytes = getFileAsByteArray(pathFrom);
         writeByteArrayToFile(bytes, pathTo);
+    }
+
+    public static String getTextFromFile (String filePath) {
+        String text = "";
+
+        try (
+            FileReader fileReader = new FileReader(filePath);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+        )
+        {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                text += line + "\n";
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return text;
+    }
+
+    public static void writeTexttoFile (String toPath, String text, boolean append) {
+        try ( FileWriter fileWriter = new FileWriter(toPath, append)) {
+           fileWriter.write(text);
+           fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
