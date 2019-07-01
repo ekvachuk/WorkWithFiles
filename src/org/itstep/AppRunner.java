@@ -16,7 +16,7 @@ public class AppRunner {
         String fileCopyPath  = MAIN_DIR + SEPARATOR + "files" + SEPARATOR + "text_copy.txt";
 
         String text = FileManagerservice.getTextFromFile(filePath);
-        FileManagerservice.writeTexttoFile(fileCopyPath, text, false);
+        FileManagerservice.writeTextToFile(fileCopyPath, text, false);
         //FileManagerservice.copyFile(filePath, fileCopyPath);
     }
     }

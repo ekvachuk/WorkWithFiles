@@ -54,7 +54,7 @@ public class FileManagerservice {
         return text;
     }
 
-    public static void writeTexttoFile (String toPath, String text, boolean append) {
+    public static void writeTextToFile (String toPath, String text, boolean append) {
         try ( FileWriter fileWriter = new FileWriter(toPath, append)) {
            fileWriter.write(text);
            fileWriter.flush();
